@@ -2,7 +2,7 @@ import os
 import random
 import sys
 import time
-
+import re
 
 STAGES = [
     """
@@ -94,6 +94,8 @@ def get_valid_letter(used_letters):
             print('Нужно ввести ровно ОДНУ букву.')
         elif not char.isalpha():
             print('Это не буква! Попробуйте еще раз.')
+        elif not bool(re.match(r'[а-яё]', char, re.IGNORECASE)):
+            print('Введите букву из русского алфавита!')
         elif char in used_letters:
             print('Вы уже вводили эту букву.')
         else:
